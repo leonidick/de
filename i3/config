@@ -24,8 +24,6 @@ exec_always --no-startup-id setxkbmap -layout "us, ru" -option grp:shift_caps_sw
 exec_always --no-startup-id ~/.config/de/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
 
-bindsym $mod+Shift+m exec ~/.config/de/powermenu/powermenu.sh
-
 workspace $ws1 output HDMI-2
 
 for_window [class="TelegramDesktop"] move to workspace $ws10
