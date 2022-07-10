@@ -20,6 +20,7 @@ exec --no-startup-id ~/.config/de/i3/screenlayout.sh
 exec --no-startup-id pulseaudio
 exec --no-startup-id picom
 exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
+exec_always --no-startup-id setxkbmap -layout "us, ru" -option grp:shift_caps_switch
 exec_always --no-startup-id ~/.config/de/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
 
@@ -33,7 +34,7 @@ exec --no-startup-id telegram-desktop
 # exec i3-msg 'workspace $ws10; exec telegram-desktop;'
 # exec i3-msg 'workspace 1'
 
-default_border pixel 4
+default_border pixel 2
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
