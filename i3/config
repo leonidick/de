@@ -1,6 +1,7 @@
 # i3-gaps config
 
 set $mod Mod4
+set $alt Mod1
 
 set $ws1 "1"
 set $ws2 "2"
@@ -8,25 +9,24 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws_i "7"
+set $ws_tg "8"
 
 gaps inner 10
 gaps outer 10
+# workspace_auto_back_and_forth yes
 
 exec --no-startup-id ~/.config/de/i3/screenlayout.sh
 exec --no-startup-id pulseaudio
 exec --no-startup-id picom
 exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin -layout "us, ru" -option grp:shift_caps_switch
-# exec --no-startup-id setxkbmap -layout "us, ru" -option grp:shift_caps_switch
 exec_always --no-startup-id ~/.config/de/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id python3 ~/.config/de/i3/placeholder/placeholder_init.py 6
 
 workspace $ws1 output HDMI-2
 
-for_window [class="TelegramDesktop"] move to workspace $ws10
+for_window [class="TelegramDesktop"] move to workspace $ws_tg
 exec --no-startup-id telegram-desktop
 # assign [class="TelegramDesktop"] $ws10
 # exec i3-msg 'workspace $ws10; exec telegram-desktop;'
@@ -48,7 +48,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id kitty -c ~/.config/de/kitty/config
 
 # kill focused window
-bindsym $mod+x kill
+bindsym $mod+x exec --no-startup-id "i3-msg kill; python3 ~/.config/de/i3/placeholder/placeholder.py;"
 
 # start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show run
@@ -77,30 +77,15 @@ bindsym $mod+Shift+f floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+0 workspace number $ws4
+bindsym $mod+9 workspace number $ws5
+bindsym $mod+8 workspace number $ws6
+bindsym $mod+$alt+1 workspace number $ws_i
+bindsym $mod+$alt+2 workspace number $ws_tg
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -109,10 +94,6 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

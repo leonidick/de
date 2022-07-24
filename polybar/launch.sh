@@ -1,6 +1,26 @@
 #!/bin/bash
 
+# poweroff all polybars
 killall -q polybar
-polybar -c ~/.config/de/polybar/config.ini placeholder &
-polybar -c ~/.config/de/polybar/config.ini leonid 2>&1 | tee -a /tmp/polybar.log & disown
+
+# wait while all polybars are going poweroff
+while pgrep -x polybar;
+do
+    sleep 1;
+done
+
+wait_polybar_opening()
+{
+    while ! pgrep -x polybar;
+    do
+        sleep 1;
+    done
+}
+
+# launch polybars
+polybar -c ~/.config/de/polybar/config.ini colorfil &
+sleep 1
+
+polybar -c ~/.config/de/polybar/config.ini main &
+polybar -c ~/.config/de/polybar/config.ini panel
 
