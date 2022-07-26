@@ -25,5 +25,12 @@ sudo apt install x11-xserver-utils pulseaudio picom nitrogen telegram-desktop po
 
 sudo apt remove xdg-desktop-portal # for telegram-desktop fast launch (i dont know why)
 
+# gif wallpaper
+~/.config/de/wallpaper/xwinwrap/install.sh
+sudo apt install gifsicle
+#---------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+
 
 
