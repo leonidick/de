@@ -20,17 +20,9 @@ echo "" >> ~/.xinitrc
 
 # install necessary pkg
 sudo apt install x11-xserver-utils pulseaudio picom nitrogen telegram-desktop polybar kitty \
-     rofi qutebrowser jq
+     rofi qutebrowser jq alsa-utils neofetch cava
 #---------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 sudo apt remove xdg-desktop-portal # for telegram-desktop fast launch (i dont know why)
-
-# gif wallpaper
-~/.config/de/wallpaper/xwinwrap/install.sh
-sudo apt install gifsicle
-#---------------------------------------------------------------------------------------------------------------------------------------------------------#
-
-
-
 
 
