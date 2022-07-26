@@ -20,8 +20,10 @@ echo "" >> ~/.xinitrc
 
 # install necessary pkg
 sudo apt install x11-xserver-utils pulseaudio picom nitrogen telegram-desktop polybar kitty \
-     rofi qutebrowser
+     rofi qutebrowser jq
 #---------------------------------------------------------------------------------------------------------------------------------------------------------#
 
 sudo apt remove xdg-desktop-portal # for telegram-desktop fast launch (i dont know why)
+
+
 
