@@ -1,21 +1,15 @@
 # i3-gaps config
 
+# keys
 set $mod Mod4
 set $alt Mod1
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws_i "7"
-set $ws_tg "8"
-
+# visual
 gaps inner 10
 gaps outer 10
-# workspace_auto_back_and_forth yes
+default_border pixel 2
 
+# system init startup
 exec --no-startup-id ~/.config/de/i3/screenlayout.sh
 exec --no-startup-id pulseaudio
 exec --no-startup-id picom
@@ -23,23 +17,21 @@ exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin -layout "us,
 exec_always --no-startup-id ~/.config/de/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id python3 ~/.config/de/i3/placeholder/placeholder_init.py 6
-
 workspace $ws1 output HDMI-2
-
 for_window [class="TelegramDesktop"] move to workspace $ws_tg
 exec --no-startup-id telegram-desktop
-# assign [class="TelegramDesktop"] $ws10
-# exec i3-msg 'workspace $ws10; exec telegram-desktop;'
-# exec i3-msg 'workspace 1'
-
-default_border pixel 2
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym $mod+$alt+k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym $mod+$alt+j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -76,6 +68,16 @@ bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws_i "7"
+set $ws_tg "8"
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
